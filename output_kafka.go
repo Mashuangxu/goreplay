@@ -7,7 +7,6 @@ import (
 	"log"
 	"strings"
 	"time"
-
 	"github.com/Shopify/sarama"
 	"github.com/Shopify/sarama/mocks"
 )
@@ -88,6 +87,9 @@ func (o *KafkaOutput) PluginWrite(msg *Message) (n int, err error) {
 		}
 		jsonMessage, _ := json.Marshal(&kafkaMessage)
 		message = sarama.StringEncoder(byteutils.SliceToString(jsonMessage))
+		if  o.config.BodyOnly {
+			message = sarama.StringEncoder(kafkaMessage.ReqBody)
+		}
 	}
 
 	o.producer.Input() <- &sarama.ProducerMessage{

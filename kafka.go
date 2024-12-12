@@ -41,6 +41,7 @@ type OutputKafkaConfig struct {
 	Host       string `json:"output-kafka-host"`
 	Topic      string `json:"output-kafka-topic"`
 	UseJSON    bool   `json:"output-kafka-json-format"`
+	BodyOnly   bool   `json:"output-kafka-body-only"`
 	SASLConfig SASLKafkaConfig
 }
 
@@ -54,12 +55,12 @@ type KafkaTLSConfig struct {
 // KafkaMessage should contains catched request information that should be
 // passed as Json to Apache Kafka.
 type KafkaMessage struct {
-	ReqURL     string            `json:"Req_URL"`
-	ReqType    string            `json:"Req_Type"`
-	ReqID      string            `json:"Req_ID"`
-	ReqTs      string            `json:"Req_Ts"`
-	ReqMethod  string            `json:"Req_Method"`
-	ReqBody    string            `json:"Req_Body,omitempty"`
+	ReqURL     string            `json:"Req_URL,omitempty"`
+	ReqType    string            `json:"Req_Type,omitempty"`
+	ReqID      string            `json:"Req_ID,omitempty"`
+	ReqTs      string            `json:"Req_Ts,omitempty"`
+	ReqMethod  string            `json:"Req_Method,omitempty"`
+	ReqBody    string            `json:"Req_Body"`
 	ReqHeaders map[string]string `json:"Req_Headers,omitempty"`
 }
 

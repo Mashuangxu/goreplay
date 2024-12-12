@@ -239,6 +239,7 @@ func init() {
 	flag.StringVar(&Settings.OutputKafkaConfig.Host, "output-kafka-host", "", "Read request and response stats from Kafka:\n\tgor --input-raw :8080 --output-kafka-host '192.168.0.1:9092,192.168.0.2:9092'")
 	flag.StringVar(&Settings.OutputKafkaConfig.Topic, "output-kafka-topic", "", "Read request and response stats from Kafka:\n\tgor --input-raw :8080 --output-kafka-topic 'kafka-log'")
 	flag.BoolVar(&Settings.OutputKafkaConfig.UseJSON, "output-kafka-json-format", false, "If turned on, it will serialize messages from GoReplay text format to JSON.")
+	flag.BoolVar(&Settings.OutputKafkaConfig.BodyOnly, "output-kafka-body-only", false, "If turned on, it will produce only body.")
 	flag.BoolVar(&Settings.OutputKafkaConfig.SASLConfig.UseSASL, "output-kafka-use-sasl", false, "--output-kafka-use-sasl true")
 	flag.StringVar(&Settings.OutputKafkaConfig.SASLConfig.Mechanism, "output-kafka-mechanism", "", "mechanism\n\tgor --input-raw :8080 --output-kafka-mechanism 'SCRAM-SHA-512'")
 	flag.StringVar(&Settings.OutputKafkaConfig.SASLConfig.Username, "output-kafka-username", "", "username\n\tgor --input-raw :8080 --output-kafka-username 'username'")
